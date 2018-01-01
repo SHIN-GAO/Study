@@ -9,14 +9,16 @@
     <h1>v-text&v-html指令</h1>
     <hr>
     <div id="app">
-        <div v-text="message"></div>
+        <span v-text="message"></span>
+        <span v-html="h2"></span>
     </div>
  
     <script type="text/javascript">
     var app = new Vue({
         el:'#app',
         data:{
-            message: 'HelloWorld!'
+            message: 'Hello World!',
+            h2: '<h2>Hello World!</h2>'
         }
     })
     </script>
