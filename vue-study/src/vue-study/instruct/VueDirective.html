@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script type="text/javascript" src="../../assets/js/vue.js"></script>
+    <title>Helloworld</title>
+</head>
+<body>
+    <h1>Vue.directive自定义指令</h1>
+    <hr>
+    <div id="app">
+        <div v-color="color">{{num}}</div>
+        <input type="button" @click="add" value="ADD">
+    </div>
+    <input type="button" onclick="unbind()" value="解绑">
+    <script type="text/javascript">
+    function unbind(){
+        app.$destroy();
+    }
+    // Vue.directive("color",function(el,binding){
+    //     console.log(el);
+    //     el.style = "color:"+binding.value;
+    // });
+    Vue.directive("color",{
+        bind:function(el,binding){//被绑定
+            console.log('1 - bind');
+            el.style = "color:"+binding.value;
+        },
+        inserted:function(){//绑定到节点
+            console.log('2 - inserted');
+        },
+        update:function(){//组件更新
+            console.log('3 - update');
+        },
+        componentUpdated:function(){//组件更新完成
+            console.log('4 - componentUpdated');
+        },
+        unbind:function(){//解绑
+            console.log('5 - unbind');
+        }
+    });
+    var app = new Vue({
+        el:'#app',
+        data:{
+            num: 10,
+            color: "red"
+        },
+        methods:{
+            add:function(){
+                this.num++;
+            }
+        }
+    })
+    </script>
+</body>
+</html>
