@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script type="text/javascript" src="../../assets/js/vue.js"></script>
+    <title>Helloworld</title>
+</head>
+<body>
+    <h1>Vue.extend构造器的延伸</h1>
+    <hr>
+    <author></author>
+    <script type="text/javascript">
+        var authorExtend = Vue.extend({
+            template:"<p><a :href='authorUrl'>{{authorName}}</a></p>",
+            data:function(){
+                return{
+                    authorName:'Baidu',
+                    authorUrl:"https://baidu.com"
+                }
+            }
+        });
+        new authorExtend().$mount('author');
+    </script>
+</body>
+</html>

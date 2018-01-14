@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script type="text/javascript" src="../../assets/js/vue.js"></script>
+    <title>Helloworld</title>
+</head>
+<body>
+    <h1>Component初识组件</h1>
+    <hr>
+    <div id="app">
+        <global></global>
+        <local></local>
+    </div>
+    <div id="ppa">
+            <global></global>
+            <local></local>
+        </div>
+    <script type="text/javascript">
+        Vue.component('global',{
+            template:`<h1>我是全局的组件</h1>`
+        })
+        var app = new Vue({
+            el:"#app",
+            data:{
+                message:'Hello,World!'
+            },
+            components: {
+                "local":{
+                    template:`<h1>我是局部的组件</h1>`
+                }
+            }
+        })
+        var ppa = new Vue({
+            el:"#ppa",
+        })
+    </script>
+</body>
+</html>

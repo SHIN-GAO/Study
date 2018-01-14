@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script type="text/javascript" src="../../assets/js/vue.js"></script>
+    <title>Helloworld</title>
+</head>
+<body>
+    <h1>Component组件props属性设置</h1>
+    <hr>
+    <div id="app">
+        <panda v-bind:here="message"></panda>
+    </div>
+    <script type="text/javascript">
+        Vue.component('panda',{
+            template:`<h1>Panda from {{here}}</h1>`,
+            props:['here']
+        })
+        var app = new Vue({
+            el:"#app",
+            data:{
+                message:'SiChuan'
+            },
+        })
+    </script>
+</body>
+</html>
