@@ -1,0 +1,53 @@
+<!DOCTYPE html>  
+<html>  
+  
+    <head>  
+        <meta charset="UTF-8">  
+        <title></title>  
+        <script type="text/javascript" src="../../assets/js/vue.js"></script>
+    </head>  
+  
+    <body>  
+        <div id="app">  
+            <table>
+                <tbody>
+                    <tr v-for="item in list">
+                        <td>
+                            {{item.num1}}
+                        </td>
+                        <td>
+                            <input type="text" v-model="item.num2"/>
+                        </td>
+                        <td>
+                            {{item.num3}}
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>  
+        <script>  
+            var vm = new Vue({  
+                el: "#app",  
+                data: { 
+                    list: [
+                        { num1: "1", num2: "",num3:"" },
+                        { num1: "11", num2: "",num3:"" }
+                    ] 
+                },
+                watch: {
+                    list: {
+                        handler: function (newVal) {
+                          for(var i = 0 ; i < newVal.length ; i++){
+                              if(newVal[i].num2 != ""){
+                                newVal[i].num3 = newVal[i].num1*newVal[i].num2;
+                              }
+                          }
+                        },
+                        deep: true
+                      }
+                }
+            });  
+        </script>  
+    </body>  
+  
+</html>  
