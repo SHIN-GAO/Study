@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <script type="text/javascript" src="../../assets/js/vue.js"></script>
+    <title>Helloworld</title>
+</head>
+
+<body>
+    <h1>propsDateOption全局扩展的传递</h1>
+    <hr>
+    <div id="app">
+
+    </div>
+    <header></header>
+    <script type="text/javascript">
+        var header_a = Vue.extend({
+            template: `<p>{{message}}-{{a}}</p>`,
+            data: function() {
+                return {
+                    message: "Hello I'm a header!"
+                }
+            },
+            props: ['a']
+        })
+        new header_a({
+            propsData: {
+                a: 'props - header!!!!!!!!'
+            }
+        }).$mount('header');
+    </script>
+</body>
+
+</html>

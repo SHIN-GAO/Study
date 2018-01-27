@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <script type="text/javascript" src="../../assets/js/vue.js"></script>
+    <title>Helloworld</title>
+</head>
+
+<body>
+    <h1>MethodOption方法选项</h1>
+    <hr>
+    <div id="app">
+        <input type="button" @click="add(4)" value="add">
+        <p>{{a}}</p>
+        <p>
+            <btn @click.native="add(4)"></btn>
+        </p>
+    </div>
+    <input type="button" onclick="app.add(4)" value="外部add">
+    <script type="text/javascript">
+        var btn = {
+            template: `<button>组件add</button>`,
+        }
+        var app = new Vue({
+            el: '#app',
+            data: {
+                a: 100,
+            },
+            components: {
+                "btn": btn
+            },
+            methods: {
+                add: function(num) {
+                    if (num != '') {
+                        this.a += num;
+                    } else {
+                        this.a++;
+                    }
+                    console.log(event);
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
