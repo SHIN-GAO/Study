@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <script type="text/javascript" src="../../assets/js/vue.js"></script>
+    <title>Helloworld</title>
+</head>
+
+<body>
+    <h1>Mixins混入选项操作</h1>
+    <hr>
+    <div id="app">
+        {{num}}
+        <input type="button" @click="add" value="add">
+    </div>
+    <script type="text/javascript">
+        var addConsole = {
+            updated:function(){
+                console.log('数据发生了变化'+this.num);
+            }
+        };
+        Vue.mixin({
+            updated:function(){
+                console.log('我是全局的混入'+this.num);
+            }
+        }
+        );
+        var app = new Vue({
+            el:'#app',
+            data:{
+                num: 1;
+            },
+            methods:{
+                add:function(){
+                    this.num++;
+                }
+            },
+            updated:function(){
+                console.log('我是原生的update'+this.num);
+            },
+            mixins:[addConsole]
+        })
+    </script>
+</body>
+
+</html>

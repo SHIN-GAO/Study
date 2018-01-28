@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <script type="text/javascript" src="../../assets/js/vue.js"></script>
+    <title>Helloworld</title>
+</head>
+
+<body>
+    <h1>Watch选项数据监控</h1>
+    <hr>
+    <div id="app">
+        <p>今日温度:{{tempture}}</p>
+        <p>穿衣建议:{{advice}}</p>
+        <input type="button" @click="addTempture" value="add tempture">
+        <input type="button" @click="reduceTempture" value="reduce tempture">
+    </div>
+    <script type="text/javascript">
+        var app = new Vue({
+            el:'#app',
+            data:{
+                tempture:14,
+                advice:'夹克长裙'
+            },
+            methods:{
+                addTempture:function(){
+                    this.tempture+=2;
+                },
+                reduceTempture:function(){
+                    this.tempture-=2;
+                }
+            },
+            watch:{
+                tempture:function(newVal,oldVal){
+                    if(newVal >= 26){
+                        this.advice = "T恤短袖";
+                    }else if(newVal < 26 && newVal > 0){
+                        this.advice = "夹克长裙";
+                    }else{
+                        this.advice = "棉衣羽绒服"
+                    }
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
