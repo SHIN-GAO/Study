@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <script type="text/javascript" src="../../assets/js/vue.js"></script>
+    <script type="text/javascript" src="../../assets/js/jquery-1.11.1.min.js"></script>
+    <title>Helloworld</title>
+</head>
+
+<body>
+    <h1>实例入门-实例属性</h1>
+    <hr>
+    <div id="app">
+        {{num}}
+        <input type="button" @click="add" value="add">
+        <div id="div1" style="width:80px;height:80px;display:none;background-color:red;"></div>
+    </div>
+
+    <script type="text/javascript">
+        var app = new Vue({
+            el: '#app',
+            data: {
+                num: 1
+            },
+            //在Vue中使用jQuery
+
+            beforeUpdate: function() {
+                $("#div1").fadeIn("slow");
+            },
+            methods: {
+                add: function() {
+                    this.num++;
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

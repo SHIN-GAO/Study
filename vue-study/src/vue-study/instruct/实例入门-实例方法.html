@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <script type="text/javascript" src="../../assets/js/vue.js"></script>
+    <script type="text/javascript" src="../../assets/js/jquery-1.11.1.min.js"></script>
+    <title>Helloworld</title>
+</head>
+
+<body>
+    <h1>实例入门-实例属性</h1>
+    <hr>
+    <div id="app">
+
+    </div>
+    <input type="button" value="销毁" onclick='destroy()'>
+    <input type="button" value="刷新" onclick='forceUpdate()'>
+    <input type="button" value="数据修改" onclick='tick()'>
+    <script type="text/javascript">
+        var example = Vue.extend({
+            template: `<p>{{message}}</p>`,
+            data: function() {
+                return {
+                    message: 'this is a example'
+                }
+            },
+            mounted: function() {
+                console.log("mounted 被创建");
+            },
+            destroyed: function() {
+                console.log("destroyed 被卸载");
+            },
+            updated: function() {
+                console.log("updated 被更新");
+            }
+        })
+        var vm = new example().$mount("#app");
+
+        function destroy() {
+            vm.$destroy();
+        }
+
+        function forceUpdate() {
+            vm.$forceUpdate();
+        }
+
+        function tick() {
+            vm.message = "update message info ";
+            vm.$nextTick(function() {
+                console.log('message更新完后我被调用了');
+            })
+        }
+    </script>
+</body>
+
+</html>

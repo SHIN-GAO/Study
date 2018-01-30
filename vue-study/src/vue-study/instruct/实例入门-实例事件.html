@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <script type="text/javascript" src="../../assets/js/vue.js"></script>
+    <script type="text/javascript" src="../../assets/js/jquery-1.11.1.min.js"></script>
+    <title>Helloworld</title>
+</head>
+
+<body>
+    <h1>实例入门-实例事件</h1>
+    <hr>
+    <div id="app">
+        {{num}}
+        <input type="button" @click="add" value="add">
+    </div>
+
+    <input type="button" onclick="reduce()" value="reduce">
+    <input type="button" onclick="reduceOnce()" value="reduce once">
+    <input type="button" onclick="off()" value="off">
+    <script type="text/javascript">
+        var app = new Vue({
+            el: '#app',
+            data: {
+                num: 1
+            },
+            methods: {
+                add: function() {
+                    this.num++;
+                }
+            }
+        })
+        app.$on('reduce', function() {
+            console.log("执行了reduce方法。");
+            this.num--;
+        })
+
+        app.$once('reduceOnce', function() {
+            console.log("执行了reduce once方法。");
+            this.num--;
+        })
+
+        function reduceOnce() {
+            app.$emit("reduceOnce");
+        }
+
+        function reduce() {
+            app.$emit("reduce");
+        }
+
+        function off() {
+            app.$off("reduce");
+        }
+    </script>
+</body>
+
+</html>
