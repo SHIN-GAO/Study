@@ -9,6 +9,8 @@
     <h1>v-on指令</h1>
     <hr>
     <div id="app">
+        <p v-if="show">这是一段文本</p>
+        <button v-on:click="show = false">点击隐藏文本</button>>
         本场比赛得分:{{score}}
         <input type="button" value="加分" v-on:click="addScore">
         <input type="button" value="减分" v-on:click="minusScore">
@@ -20,7 +22,9 @@
         el:"#app",
         data:{
             score: 0,
-            score2: 1
+            score2: 1,
+            show: true
+
         },
         methods:{
             addScore:function(){
