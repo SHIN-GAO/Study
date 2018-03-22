@@ -20,6 +20,7 @@
                {{index+1}}-{{student.name}}-{{student.age}}
             </li>
         </ul>
+        <span v-for="(value,key) in user">{{key}} : {{value}} </span>
     </div>
  
     <script type="text/javascript">
@@ -32,7 +33,12 @@
                     {name:'Oscar',age:80},
                     {name:'Caler',age:24},
                     {name:'Guangshuai',age:30}
-                ]
+                ],
+                user: {
+                    name: 'shin',
+                    gender: 'male',
+                    age: 26,
+                },
             },
             computed: {
                 sortitems:function() {

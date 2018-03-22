@@ -24,6 +24,7 @@
     <div id="app">
         <p>原始文本信息：{{message}}</p>
         <h3>文本框</h3>
+        <p>@input<input type="text" @input=handleInput></p>
         <p>v-model:<input type="text" v-model="message"></p>
         <p>v-model.lazy:<input type="text" v-model.lazy="message"></p>
         <p>v-model.number:<input type="text" v-model.number="message"></p>
@@ -52,17 +53,48 @@
         <input type="radio" id="male" value="男" v-model="sex">
         <input type="radio" id="female" value="女" v-model="sex">
         <p>您选择的性别是：{{sex}}</p>
+
+        <select v-model="selected" multiple>
+            <option v-for="option in options" :value="option.value">{{option.text}}</option>
+        </select>
+        <p>选择的项是：{{selected}}</p>
+
+        <input type="radio" v-model="picked" :value="value">
+        <p>{{picked}}</p>
+        <p>{{value}}</p>
     </div>
  
     <script type="text/javascript">
     var app = new Vue({
         el:"#app",
         data:{
+            picked: false,
+            value: 123,
             message:'Hello World!',
-            isTrue: true,
+            isTrue: false,
             students:[],
-            sex: '男'
+            sex: '男',
+            selected: ['html'],
+            options: [
+                {
+                    text: 'HTML',
+                    value: 'html'
+                },
+                {
+                    text: 'JavaScript',
+                    value: 'js'
+                },
+                {
+                    text: 'CSS',
+                    value: 'css'
+                }
+            ]
         },
+        methods: {
+            handleInput: function(e) {
+                this.message = e.target.value;
+            }
+        }
     })
     </script>
 </body>

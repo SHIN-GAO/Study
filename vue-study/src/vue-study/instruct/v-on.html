@@ -9,6 +9,7 @@
     <h1>v-on指令</h1>
     <hr>
     <div id="app">
+        <a href="www.baidu.com" @click="handleClick('禁止打开',$event)">打开链接</a>
         <p v-if="show">这是一段文本</p>
         <button v-on:click="show = false">点击隐藏文本</button>>
         本场比赛得分:{{score}}
@@ -35,6 +36,10 @@
             },
             onEnter:function(){
                 this.score = this.score + parseInt(this.score2);
+            },
+            handleClick:function(message,event) {
+                event.preventDefault();
+                window.alert(message);
             }
         }
     })
